@@ -1,0 +1,49 @@
+
+.navbar {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.navbar-header img {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.col-xs-6 {
+    /*border-style: solid;*/
+    max-height: 250px;
+    text-align: center;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.col-xs-12 {
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid {
+    max-width: 1000px;
+    /*border-style: dashed;*/
+}
+
+.top {
+    height: 100px;
+    /*width: 100%;*/
+    /*background-color: rgb(255,2,5);*/
+}
+
+.radar-box {
+    padding-top: 25px;
+    text-align: center;
+    /*background-color: rgb(255,255,2);*/
+    height: 100%;
+}
+
+img{
+    max-height: 240px;
+    max-width: 240px;
+}

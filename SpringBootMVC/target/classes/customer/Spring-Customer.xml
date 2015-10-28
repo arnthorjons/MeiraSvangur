@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       <!--
+       <bean id="customerDAO" class="project.dao.impl.JdbcCustomerDAO">
+              <property name="dataSource" ref="dataSource" />
+       </bean>
+       -->
+       <!-- Definition for restaurantJDBCTemplate bean -->
+       <bean id="database"
+             class="project.dao.impl.Database">
+              <property name="dataSource"  ref="dataSource" />
+       </bean>
+
+</beans>
