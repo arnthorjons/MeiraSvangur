@@ -3,13 +3,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-       <bean id="dataSource"
-             class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource"
+         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
-              <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-              <property name="url" value="jdbc:mysql://localhost:3306/restaurant_project" />
-              <property name="username" value="root" />
-              <property name="password" value="Svangur666" />
-       </bean>
+          <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+          <property name="url" value="jdbc:mysql://localhost:3306/restaurant_project" />
+          <property name="username" value="root" />
+          <property name="password" value="Engifer12#" />
+    </bean>
+
+    <bean id="database"
+          class="project.Service.Database">
+        <property name="dataSource"  ref="dataSource" />
+    </bean>
 
 </beans>

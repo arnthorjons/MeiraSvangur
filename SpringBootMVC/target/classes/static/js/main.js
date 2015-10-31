@@ -4,13 +4,14 @@ function getRestaurants() {
     // set variables into javascript object which you need to send to spring controller
     // the variable name here should be same as it is in your java class UserDetails.java
 
-
+    var restaur = {};
+    restar.search = "ble";
 
     $.ajax({
         type : 'GET',
         url : 'http://localhost:8080/getRestaurants',
         dataType : 'json',
-        //data : JSON.stringify(restaurants),
+        data : JSON.stringify(restaurants),
         contentType : 'application/json',
         success : function(data) {
             //here in data variable, you will get list of all users sent from

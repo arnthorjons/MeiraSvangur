@@ -1,4 +1,4 @@
-package project.dao;
+package project.Service.Interface;
 
 import project.model.Restaurant;
 import javax.sql.DataSource;

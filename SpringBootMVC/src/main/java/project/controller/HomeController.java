@@ -8,9 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import project.dao.impl.Database;
+import project.Service.Database;
 import project.model.Restaurant;
-import project.service.StringManipulationService;
 
 import java.util.List;
 
@@ -18,12 +17,12 @@ import java.util.List;
 public class HomeController {
 
     // Instance Variables
-    StringManipulationService stringService;
+    Database database;
 
     // Dependency Injection
     @Autowired
-    public HomeController(StringManipulationService stringService) {
-        this.stringService = stringService;
+    public HomeController(Database database) {
+        this.database = database;
     }
 
     // Request mapping is the path that you want to map this method to
@@ -41,58 +40,8 @@ public class HomeController {
     }
 
     // To call this method, enter "localhost:8080/user" into a browser
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String user(Model model){
-
-        // Here we will show how to add attributes to a model and send it to the view
-
-        // Since this small example is for a user, let's create some attributes
-        // that users might usually have in a system
-        String name = "Rincewind";
-        String job  = "Wizzard";
-        String email = "rincewizz@unseenuni.edu";
-        String description = "most likely to survive in a dungeon dimension.";
-
-
-        // Since we want our attributes regarding the user always in the same format,
-        // we are going to convert some strings using our StringManipulationService
-
-        // Let's assume that the name, job and description always have
-        // the first character in upper case
-        name = stringService.convertsFirstCharInStringToUpperCase(name);
-        job = stringService.convertsFirstCharInStringToUpperCase(job);
-        description = stringService.convertsFirstCharInStringToUpperCase(description);
-
-        // Let's assume that we always want e-mail in lower case
-        email = stringService.convertStringToLowerCase(email);
-
-
-        // Now let's add the attributes to the model
-        model.addAttribute("name",name);
-        model.addAttribute("job",job);
-        model.addAttribute("email",email);
-        model.addAttribute("description",description);
-
-
-
-        // By adding attributes to the model, we can pass information from the controller
-        // to the view (the .jsp file).
-        // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
-        return "User";
-    }
-
     @RequestMapping(value = "/svangur", method = RequestMethod.GET)
     public String svangur(Model model){
-
-        // Here we will show how to add attributes to a model and send it to the view
-
-        // Since this small example is for a user, let's create some attributes
-        // that users might usually have in a system
-        String name = "Rincewind";
-        String job  = "Wizzard";
-        String email = "rincewizz@unseenuni.edu";
-        String description = "most likely to survive in a dungeon dimension.";
-
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("Spring-Module.xml");
 
@@ -112,50 +61,19 @@ public class HomeController {
             System.out.println("City : " + restaurant.getCity() + ",");
             System.out.println("Horizontal : " + restaurant.getHorizontal() + ",");
             System.out.println("Vertical : " + restaurant.getVertical() + ",");
-
-            name = restaurant.getAddress() + "";
         }
 
-
-
-        // Since we want our attributes regarding the user always in the same format,
-        // we are going to convert some strings using our StringManipulationService
-
-        // Let's assume that the name, job and description always have
-        // the first character in upper case
-        name = stringService.convertsFirstCharInStringToUpperCase(name);
-        job = stringService.convertsFirstCharInStringToUpperCase(job);
-        description = stringService.convertsFirstCharInStringToUpperCase(description);
-
-        // Let's assume that we always want e-mail in lower case
-        email = stringService.convertStringToLowerCase(email);
-
-
-        // Now let's add the attributes to the model
-        model.addAttribute("name",name);
-        model.addAttribute("job",job);
-        model.addAttribute("email",email);
-        model.addAttribute("description",description);
-
-
-
-        // By adding attributes to the model, we can pass information from the controller
-        // to the view (the .jsp file).
-        // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
         return "Svangur";
     }
 
     @RequestMapping(value = "/getRestaurants", method = RequestMethod.GET)
     public @ResponseBody List<Restaurant> getRestaurants() {
-        // fetch the userid to be deleted from the userDetails
-        // remebmer the id of user to be deleted will be set in the ajax call
-
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("Spring-Module.xml");
 
         Database database = (Database)context.getBean("database");
 
-       List<Restaurant> restaurants = database.listRestaurants();
+        List<Restaurant> restaurants = database.listRestaurants();
 
         return restaurants;
     }

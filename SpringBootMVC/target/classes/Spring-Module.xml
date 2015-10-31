@@ -12,11 +12,11 @@
 
         <!--Database-->
        <import resource="database/Spring-Datasource.xml"/>
-       <import resource="customer/Spring-Customer.xml"/>
+    <!--<import resource="customer/Spring-Customer.xml"/>-->
 
     <!--JSON-->
     <context:component-scan base-package="project.controller" />
-    <context:component-scan base-package="project.service" />
+    <context:component-scan base-package="project.Service" />
 
 
 
@@ -26,8 +26,6 @@
 
 
     <mvc:annotation-driven />
-
-
 
 
 </beans>
